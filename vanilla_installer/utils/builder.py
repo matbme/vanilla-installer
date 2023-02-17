@@ -18,7 +18,6 @@ import os
 import sys
 import logging
 import subprocess
-import json
 
 from gettext import gettext as _
 from gi.repository import Gio
@@ -31,6 +30,7 @@ from vanilla_installer.defaults.keyboard import VanillaDefaultKeyboard
 from vanilla_installer.defaults.timezone import VanillaDefaultTimezone
 from vanilla_installer.defaults.users import VanillaDefaultUsers
 from vanilla_installer.defaults.disk import VanillaDefaultDisk
+from vanilla_installer.defaults.encryption import VanillaDefaultEncryption
 
 from vanilla_installer.layouts.preferences import VanillaLayoutPreferences
 from vanilla_installer.layouts.yes_no import VanillaLayoutYesNo
@@ -47,6 +47,7 @@ templates = {
     "preferences": VanillaLayoutPreferences,
     "users": VanillaDefaultUsers,
     "disk": VanillaDefaultDisk,
+    "encryption": VanillaDefaultEncryption,
     "yes-no": VanillaLayoutYesNo
 }
 
@@ -114,7 +115,7 @@ class Builder:
     @property
     def recipe(self):
         return self.__recipe.raw
-    
+
     @property
     def distro_info(self):
         return {
